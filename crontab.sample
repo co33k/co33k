@@ -1,0 +1,4 @@
+# m h  dom mon dow   command
+*/3 * * * * /usr/bin/env python /home/co33k/twitter/tweet.py &> /dev/null
+* * * * * /usr/bin/env python /home/co33k/twitter/catcher.py &> /dev/null
+
