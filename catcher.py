@@ -81,7 +81,7 @@ def main(dry_run=False):
         if u'はらへ' in status_text and u'_rin' in status.user.screen_name:
             is_harahe = True
 
-        responses = co33k.responses_for_status(user, status.text, dry_run=dry_run)
+        responses = co33k.responses_for_status(user, status, dry_run=dry_run)
 
         repondu = False
         if responses:

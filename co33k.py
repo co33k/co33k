@@ -129,6 +129,7 @@ nicknames_oni = (
 userinfos = {
     7812092   : ( 15,  True, nicknames_ebi ), # @co3k
     285544941 : (  3, False, nicknames_ebi ), # @co3k_now
+    198824125 : ( 99,  True, (u'こみみけ',) ), # @co33k
     284623708 : (  0,  True, nicknames_teri ), #/ @teteteBGM
     283105568 : (  3,  True, nicknames_rin ), # @nowplaying_rin
     14432798  : (  5,  True, (u'ばりばり', u'バカ犬',) ), # @balibali
@@ -160,7 +161,7 @@ userinfos = {
 
 thru_words = ThruWord.words()
 
-allowed_hashtags = (u'#kr_cvs') #, u'#キョクナビ')
+allowed_hashtags = (u'kr_cvs', u'テストやで') #, u'#キョクナビ')
 
 censor_words = ('co33k_bot', 'naoya_rin', 'naoya_t')
 
@@ -199,7 +200,9 @@ def is_to_ignore(status):
     return False
 
 
-def responses_for_status(user, status_text, dry_run=False):
+def responses_for_status(user, status, dry_run=False):
+    status_text = status.text
+
     res_rate = 12.5
     ozanari_p = False
     nickname = user.name
@@ -231,11 +234,13 @@ def responses_for_status(user, status_text, dry_run=False):
 
 
     responses = []
-    def add_response(message, percent, with_unofficial_rt=True):
+    def add_response(message, percent, with_rt=True):
         if isinstance(message, str):
             message = message.decode('utf-8')
-        if with_unofficial_rt:
-            full_text = u'%s RT @%s: %s' % (message, user.screenname, status_text)
+        if with_rt:
+            target_url = 'https://twitter.com/%s/status/%s' % (user.screenname, status.id_str)
+            full_text = u'%s %s' % (message, target_url)
+            # full_text = u'%s RT @%s: %s' % (message, user.screenname, status_text) ## unofficial RT
         else:
             full_text = u'@%s %s' % (user.screenname, message)
 
