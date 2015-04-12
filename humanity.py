@@ -247,7 +247,7 @@ def generate_responses(status_text, morphemes, surfaces, orig_forms):
         responses.append( (msg, 99) )
 
     if u'うひ' in status_text:
-        msg = u'う' + (u'ひ' * util.php_rand(2, 4))
+        msg = u'う' + (u'ひ' * php_rand(2, 4))
         responses.append( (msg, 50) )
 
 
