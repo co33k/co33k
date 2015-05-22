@@ -61,10 +61,14 @@ def escape_unknown_persons(text):
     return u'$'.join(escaped)
 
 teri_age_str = util.age_str(19790608, u'誕生日男子')
+if util.p(50):
+    teri_age_str = u'人間で言うとおよそ' + teri_age_str
+
 nicknames_teri = (
     u'てりやき',
     u'テリー',
     u'ててて',
+    u'うひひ',
     u'弁当男子',
     u'大人コミック',
     teri_age_str, teri_age_str, teri_age_str,
@@ -86,6 +90,7 @@ nicknames_teri = (
     #u'サラリーマンのコスプレ',
     u'本体は自転車で、上に乗ってる飾りの男性',
     u'本体はスーツで、中に入ってる飾りの男性',
+    u'青椒肉絲食べたいマン',
 )
 nicknames_teri_digest = (
     u'てりやき',
