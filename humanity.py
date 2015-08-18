@@ -75,7 +75,7 @@ def generate_responses(status_text, morphemes, surfaces, orig_forms):
         # '浴衣', '花火', '祭り',
     )
     if has_any_word(status_text, beer_related_words):
-        responses.append( (u'nicebeer', 50) )
+        responses.append( (u'[★]nicebeer', 50) )
     if has_any_word(status_text, (u'ホッピー', u'hoppy')):
         responses.append( (u'happyhoppy', 50) )
 
@@ -110,6 +110,13 @@ def generate_responses(status_text, morphemes, surfaces, orig_forms):
         okaerip = True
     if okaerip:
         responses.append( (u'おかえりやで', 80) )
+
+    # エナジードリンク
+    if has_any_word(status_text, (u'レッドブル', u'Red Bull',
+                                  u'モンスター', u'MONSTER',  # MONSTER ENERGY
+                                  u'ライジン', u'RAIZIN',
+                                 )):
+        responses.append( (u'アヘン戦争やで', 80) )
 
     # 在処
     arika_dic = (
@@ -166,6 +173,9 @@ def generate_responses(status_text, morphemes, surfaces, orig_forms):
         responses.append( (msg, 80) )
     if u'コンビニ' in status_text:
         msg = u'コンビニといえばセイコマやで'
+        responses.append( (msg, 33) )
+    if u'セイコマ' in status_text:
+        msg = u'セイコマ以外のコンビニを認めないと東京では生きづらいんやで'
         responses.append( (msg, 33) )
 
     # それは・・・やで
